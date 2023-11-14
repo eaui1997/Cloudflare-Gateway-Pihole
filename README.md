@@ -1,4 +1,6 @@
-[English](README.md) | [Việt Nam](docs/vi.md)
+![CF_logo_stacked_whitetype](https://github.com/luxysiv/Cloudflare-Gateway-Pihole/assets/46205571/b8b7b12b-2fd8-4978-8e3c-2472a4167acb)
+
+**[English](README.md)** | **[Việt Nam](docs/vi.md)**
 
 # Pihole styled, but using Cloudflare Gateway
 `For Devs, Ops, and everyone who hates Ads.`
@@ -62,11 +64,19 @@ hostsVN = https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/host
 **if you know how to do, you can skip this step.**
 
 ```
-pkg upgrade
-pkg install python-pip
-pkg install git
+yes | pkg upgrade
+yes | pkg install python-pip
+yes | pkg install git
 # Clone your forked repo. #
 ```
+
+* Edit `.env` (**required**)
+
+```
+nano .env
+```
+
+`CTRL + X + Y + ENTER` to save it
 
 * Command to upload (update) your DNS list.
 ```
@@ -85,8 +95,8 @@ _You may also check this out [termux-change-repo](https://wiki.termux.com/wiki/P
 
 ```python
 async def main():
-    adlist_urls = read_urls_from_file("adlist.ini")
-    whitelist_urls = read_urls_from_file("whitelist.ini")
+    adlist_urls = read_urls_from_file("./lists/adlist.ini")
+    whitelist_urls = read_urls_from_file("./lists/whitelist.ini")
     adlist_name = "DNS-Filters"
     app = App(adlist_name, adlist_urls, whitelist_urls)
     await app.delete()  # Leave script
